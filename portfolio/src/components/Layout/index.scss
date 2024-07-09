@@ -23,6 +23,7 @@
   margin-left: -20px;
 }
 
+
 .container {
   width: 100%;
   will-change: contents;
@@ -36,65 +37,77 @@
   transform-style: preserve-3d;
   animation: fadeIn 1s forwards;
   animation-delay: 1s;
+
+  section {
+    transform-style: preserve-3d;
+    animation: slideIn 2s forwards;
+    animation-delay: 1s;
+  }
 }
+
+
 
 .container.contact-page,
 .container.about-page,
-.container.portfolio-page {
-  
-    h1 {
-      font-size: 53px;
-      font-family: 'Coolvetica';
+.container.skills-page,
+.container.projects-page {
+
+  h1{
+    font-size: 53px;
+    font-family: 'Coolvetica';
+    color: #ffd700;
+    font-weight: 400;
+    margin-top: 0;
+    position: relative;
+    margin-bottom: 40px;
+    left: -10px;
+
+    &:before {
+      content: '<h1>';
+      font-family: 'La Belle Aurore', cursive;
       color: #ffd700;
-      font-weight: 400;
-      margin-top: 0;
-      position: relative;
-      margin-bottom: 40px;
+      font-size: 18px;
+      position: absolute;
+      margin-top: -10px;
       left: -10px;
-
-      &:before {
-        content: '<h1>';
-        font-family: 'La Belle Aurore', cursive;
-        color: #ffd700;
-        font-size: 18px;
-        position: absolute;
-        margin-top: -10px;
-        left: -10px;
-        opacity: 0.6;
-        line-height: 18px;
-      }
-
-      &:after {
-        content: '<h1/>';
-        font-family: 'La Belle Aurore', cursive;
-        color: #ffd700;
-        font-size: 18px;
-        line-height: 18px;
-        position: absolute;
-        left: -30px;
-        bottom: -20px;
-        margin-left: 20px;
-        opacity: 0.6;
-      }
+      opacity: 0.6;
+      line-height: 18px;
     }
 
-    p {
-      font-size: 13px;
-      color: #fff;
-      font-family: sans-serif;
-      font-weight: 300;
-      max-width: fit-content;
-      animation: pulse 1s;
-      &:nth-of-type(1) {
-        animation-delay: 1.1s;
-      }
-      &:nth-of-type(2) {
-        animation-delay: 1.2s;
-      }
-      &:nth-of-type(3) {
-        animation-delay: 1.3s;
-      }
+    &:after {
+      content: '<h1/>';
+      font-family: 'La Belle Aurore', cursive;
+      color: #ffd700;
+      font-size: 18px;
+      line-height: 18px;
+      position: absolute;
+      left: -30px;
+      bottom: -20px;
+      margin-left: 20px;
+      opacity: 0.6;
     }
+  }
+
+  p {
+    font-size: 13px;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 300;
+    max-width: fit-content;
+    animation: pulse 1s;
+
+    &:nth-of-type(1) {
+      animation-delay: 1.1s;
+    }
+
+    &:nth-of-type(2) {
+      animation-delay: 1.2s;
+    }
+
+    &:nth-of-type(3) {
+      animation-delay: 1.3s;
+    }
+  }
 
   .text-zone {
     position: absolute;
@@ -114,6 +127,19 @@
   }
 }
 
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
 @media screen and (max-width: 1200px) {
   .page {
     position: initial;
@@ -125,8 +151,7 @@
     min-height: auto;
 
     &.contact-page,
-    &.about-page,
-    &.portfolio-page {
+    &.about-page {
       .text-zone {
         position: initial;
         transform: none;
@@ -134,22 +159,6 @@
         display: block;
         padding: 20px;
         box-sizing: border-box;
-      }
-    }
-
-    &.portfolio-page {
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-
-      h1.page-title {
-        margin-left: 20px;
-        margin-top: 20px;
-      }
-
-      .image-box {
-        height: 200px;
-        max-width: calc(50% - 10px);
       }
     }
   }
